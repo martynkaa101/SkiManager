@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/txt_imie"
+        android:layout_width="374dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="36dp"
+        android:ems="10"
+        android:hint="Imię"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/txt_nazwisko"
+        android:layout_width="374dp"
+        android:layout_height="61dp"
+        android:ems="10"
+        android:hint="Nazwisko"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_imie" />
+
+    <EditText
+        android:id="@+id/txt_urodziny"
+        android:layout_width="374dp"
+        android:layout_height="61dp"
+        android:ems="10"
+        android:hint="Data Urodzenia"
+        android:inputType="date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_nazwisko" />
+
+    <EditText
+        android:id="@+id/txt_email"
+        android:layout_width="374dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="60dp"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_urodziny" />
+
+    <EditText
+        android:id="@+id/txt_haslo"
+        android:layout_width="374dp"
+        android:layout_height="61dp"
+        android:ems="10"
+        android:hint="Haslo"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_email" />
+
+    <Button
+        android:id="@+id/rejestracja_btn"
+        android:layout_width="154dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="12dp"
+        android:background="#2196F3"
+        android:text="Zarejestruj się"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_haslo" />
+
+    <Button
+        android:id="@+id/login_btn"
+        android:layout_width="125dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="12dp"
+        android:background="#2196F3"
+        android:text="Zaloguj się"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rejestracja_btn" />
+
+    <EditText
+        android:id="@+id/txt_telefon"
+        android:layout_width="374dp"
+        android:layout_height="61dp"
+        android:ems="10"
+        android:hint="Nr telefonu"
+        android:inputType="phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_urodziny" />
+</androidx.constraintlayout.widget.ConstraintLayout>
