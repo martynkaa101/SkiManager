@@ -187,7 +187,8 @@ public class HourChoice extends AppCompatActivity {
             public void onClick(View v) {
                 String type="lesson";
                 BackgroundTask backgroundTask= new BackgroundTask(getApplicationContext());
-                backgroundTask.execute(type, InstructorChoice.getTmp_instructor(), InstructorChoice.getTmp_year(), InstructorChoice.getTmp_month(), InstructorChoice.getTmp_day(), tmp_hour.substring(0,tmp_hour.indexOf(":")), tmp_quantity);
+                System.out.println(login.getEmail1());
+                backgroundTask.execute(type, InstructorChoice.getTmp_instructor(), InstructorChoice.getTmp_year(), InstructorChoice.getTmp_month(), InstructorChoice.getTmp_day(), tmp_hour.substring(0,tmp_hour.indexOf(":")), tmp_quantity, login.getEmail1());
             }
         });
 

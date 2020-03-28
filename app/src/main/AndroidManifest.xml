@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".HourChoice"></activity>
+        <activity android:name=".RatingLessons"></activity>
+        <activity android:name=".HourChoice" />
         <activity android:name=".InstructorChoice" />
         <activity android:name=".MainPanel" />
         <activity android:name=".login" />

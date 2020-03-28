@@ -9,8 +9,13 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class login extends AppCompatActivity {
+    private static String email1;
     Button btn_login, btn_rejestracja;
     EditText txt_haslo_login, txt_email_login;
+
+    public static String getEmail1() {
+        return email1;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +39,9 @@ public class login extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 if(backgroundTask.isResult1() == true) {
-                        Intent intent = new Intent(login.this, MainPanel.class);
-                        startActivity(intent);
+                    email1 = txt_email_login.getText().toString();
+                    Intent intent = new Intent(login.this, MainPanel.class);
+                    startActivity(intent);
                 }
 
             }

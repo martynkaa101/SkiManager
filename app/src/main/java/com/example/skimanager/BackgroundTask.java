@@ -29,6 +29,7 @@ import java.net.URLEncoder;
 
 public class BackgroundTask extends AsyncTask<String, String, String>{
     private static String[][] data;
+    private static String[][] data_lesson;
     String result="";
     Boolean result1=false;
 
@@ -38,6 +39,10 @@ public class BackgroundTask extends AsyncTask<String, String, String>{
 
     public static String[][] getData() {
         return data;
+    }
+
+    public static String[][] getData_lesson() {
+        return data_lesson;
     }
 
     Context context;
@@ -55,6 +60,10 @@ public class BackgroundTask extends AsyncTask<String, String, String>{
         String regURL="http://10.0.2.2:8080/registration_folder/registration.php";
         String instructorURL="http://10.0.2.2:8080/registration_folder/free_hour.php";
         String lessonURL="http://10.0.2.2:8080/registration_folder/lesson.php";
+        String savedLessonURL="http://10.0.2.2:8080/registration_folder/saved_lesson.php";
+        String lessonInfoURL="http://10.0.2.2:8080/registration_folder/lesson_info.php";
+        String lessonRateURL="http://10.0.2.2:8080/registration_folder/lesson_rate.php";
+
 
         if(type.equals("reg")){
             //System.out.println("cos tam sie udalo");
@@ -154,7 +163,6 @@ public class BackgroundTask extends AsyncTask<String, String, String>{
             try {
                 URL url = new URL(instructorURL);
                 try {
-                    System.out.println("bla bla bla");
                     HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                     httpURLConnection.setRequestMethod("POST");
                     httpURLConnection.setDoOutput(true);
@@ -211,6 +219,7 @@ public class BackgroundTask extends AsyncTask<String, String, String>{
             String day = strings[4];
             String hour = strings[5];
             String quantity = strings[6];
+            String email1 = strings[7];
 
             try {
                 URL url = new URL(lessonURL);
@@ -228,6 +237,151 @@ public class BackgroundTask extends AsyncTask<String, String, String>{
                             "&" + URLEncoder.encode("day", "UTF-8") + "=" + URLEncoder.encode(day, "UTF-8") +
                             "&" + URLEncoder.encode("hour", "UTF-8") + "=" + URLEncoder.encode(hour, "UTF-8") +
                             "&" + URLEncoder.encode("quantity", "UTF-8") + "=" + URLEncoder.encode(quantity, "UTF-8");
+                    bufferedWriter.write(lesson_data);
+                    bufferedWriter.flush();
+                    bufferedWriter.close();
+                    InputStream inputStream = httpURLConnection.getInputStream();
+                    InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "ISO-8859-1");
+                    BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                    String result = "";
+                    String line = "";
+                    StringBuilder stringBuilder = new StringBuilder();
+                    while ((line = bufferedReader.readLine()) != null) {
+                        stringBuilder.append(line).append("\n");
+
+                    }
+                    result = stringBuilder.toString();
+                    bufferedReader.close();
+                    inputStream.close();
+                    httpURLConnection.disconnect();
+                    if(result.equals("lesson saved\n")) {
+                        try {
+                            URL url1 = new URL(savedLessonURL);
+                            try {
+                                HttpURLConnection httpURLConnection1 = (HttpURLConnection) url1.openConnection();
+                                httpURLConnection1.setRequestMethod("POST");
+                                httpURLConnection1.setDoOutput(true);
+                                httpURLConnection1.setDoInput(true);
+                                OutputStream outputStream1 = httpURLConnection1.getOutputStream();
+                                OutputStreamWriter outputStreamWriter1 = new OutputStreamWriter(outputStream1, "UTF-8");
+                                BufferedWriter bufferedWriter1 = new BufferedWriter(outputStreamWriter1);
+                                String saved_lesson_data = URLEncoder.encode("instructor", "UTF-8") + "=" + URLEncoder.encode(instructor, "UTF-8") +
+                                        "&" + URLEncoder.encode("email", "UTF-8") + "=" + URLEncoder.encode(email1, "UTF-8") +
+                                        "&" + URLEncoder.encode("year", "UTF-8") + "=" + URLEncoder.encode(year, "UTF-8") +
+                                        "&" + URLEncoder.encode("month", "UTF-8") + "=" + URLEncoder.encode(month, "UTF-8") +
+                                        "&" + URLEncoder.encode("day", "UTF-8") + "=" + URLEncoder.encode(day, "UTF-8") +
+                                        "&" + URLEncoder.encode("hour", "UTF-8") + "=" + URLEncoder.encode(hour, "UTF-8");
+                                bufferedWriter1.write(saved_lesson_data);
+                                bufferedWriter1.flush();
+                                bufferedWriter1.close();
+                                InputStream inputStream1 = httpURLConnection1.getInputStream();
+                                InputStreamReader inputStreamReader1 = new InputStreamReader(inputStream1, "ISO-8859-1");
+                                BufferedReader bufferedReader1 = new BufferedReader(inputStreamReader1);
+                                String result1 = "";
+                                String line1 = "";
+                                StringBuilder stringBuilder1 = new StringBuilder();
+                                while ((line1 = bufferedReader1.readLine()) != null) {
+                                    stringBuilder1.append(line1).append("\n");
+
+                                }
+                                result1 = stringBuilder1.toString();
+                                bufferedReader1.close();
+                                inputStream1.close();
+                                httpURLConnection1.disconnect();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        } catch (MalformedURLException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    return result;
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+        } else if(type.equals("lesson_info")) {
+            String email = strings[1];
+            try {
+                URL url = new URL(lessonInfoURL);
+                try {
+                    HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                    httpURLConnection.setRequestMethod("POST");
+                    httpURLConnection.setDoOutput(true);
+                    httpURLConnection.setDoInput(true);
+                    OutputStream outputStream = httpURLConnection.getOutputStream();
+                    OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream, "UTF-8");
+                    BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
+                    String lessonInfo_data = URLEncoder.encode("email", "UTF-8") + "=" + URLEncoder.encode(email, "UTF-8");
+                    bufferedWriter.write(lessonInfo_data);
+                    bufferedWriter.flush();
+                    bufferedWriter.close();
+                    InputStream inputStream = httpURLConnection.getInputStream();
+                    InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "ISO-8859-1");
+                    BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                    String result = "";
+                    String line = "";
+                    StringBuilder stringBuilder = new StringBuilder();
+                    while ((line = bufferedReader.readLine()) != null) {
+                        stringBuilder.append(line).append("\n");
+                    }
+                    result = stringBuilder.toString();
+                    bufferedReader.close();
+                    inputStream.close();
+                    httpURLConnection.disconnect();
+                    JSONArray jsonArray = new JSONArray(result);
+                    JSONObject jsonObject = null;
+                    data_lesson = new String[5][jsonArray.length()];
+
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        jsonObject = jsonArray.getJSONObject(i);
+                        data_lesson[0][i] = jsonObject.getString("instructor");
+                        data_lesson[1][i] = jsonObject.getString("year");
+                        data_lesson[2][i] = jsonObject.getString("month");
+                        data_lesson[3][i] = jsonObject.getString("day");
+                        data_lesson[4][i] = jsonObject.getString("hour");
+                    }
+                    return result;
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                } catch (ProtocolException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+        } else if(type.equals("lesson_rate")) {
+            String email = strings[1];
+            String instructor = strings[2];
+            String year = strings[3];
+            String month = strings[4];
+            String day = strings[5];
+            String hour = strings[6];
+            String rate = strings[7];
+
+            try {
+                URL url = new URL(lessonRateURL);
+                try {
+                    HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                    httpURLConnection.setRequestMethod("POST");
+                    httpURLConnection.setDoOutput(true);
+                    httpURLConnection.setDoInput(true);
+                    OutputStream outputStream = httpURLConnection.getOutputStream();
+                    OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream, "UTF-8");
+                    BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
+                    String lesson_data = URLEncoder.encode("email", "UTF-8") + "=" + URLEncoder.encode(email, "UTF-8") +
+                            "&" + URLEncoder.encode("instructor", "UTF-8") + "=" + URLEncoder.encode(instructor, "UTF-8") +
+                            "&" + URLEncoder.encode("year", "UTF-8") + "=" + URLEncoder.encode(year, "UTF-8") +
+                            "&" + URLEncoder.encode("month", "UTF-8") + "=" + URLEncoder.encode(month, "UTF-8") +
+                            "&" + URLEncoder.encode("day", "UTF-8") + "=" + URLEncoder.encode(day, "UTF-8") +
+                            "&" + URLEncoder.encode("hour", "UTF-8") + "=" + URLEncoder.encode(hour, "UTF-8") +
+                            "&" + URLEncoder.encode("rate", "UTF-8") + "=" + URLEncoder.encode(rate, "UTF-8");
                     bufferedWriter.write(lesson_data);
                     bufferedWriter.flush();
                     bufferedWriter.close();
