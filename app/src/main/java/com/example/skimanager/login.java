@@ -2,6 +2,7 @@ package com.example.skimanager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,7 +30,8 @@ public class login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String email=txt_email_login.getText().toString();
-                String haslo=txt_haslo_login.getText().toString();
+                String haslo = Base64.encodeToString(txt_haslo_login.getText().toString().getBytes(), Base64.DEFAULT);
+                System.out.println(haslo);
                 String type="login";
                 BackgroundTask backgroundTask= new BackgroundTask(getApplicationContext());
                 backgroundTask.execute(type, email, haslo);

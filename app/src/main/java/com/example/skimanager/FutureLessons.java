@@ -5,7 +5,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.RatingBar;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,37 +15,21 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-public class RatingLessons extends AppCompatActivity {
+public class FutureLessons extends AppCompatActivity {
 
-    Button submit;
+    Button cancel;
     Spinner spinner;
-    RatingBar ratingBar;
-    private String tmp_instructor, tmp_year, tmp_month, tmp_day, tmp_hour;
-    private String[][] data_lesson, new_data_lesson;
-    private int tmp_position;
-    private ArrayList<String> lessons = new ArrayList<>();
+    private String[][] data_lesson;
     private ArrayList<Integer> newPosition = new ArrayList<>();
-
-    public void refresh(){
-        String type="lesson_info";
-        BackgroundTask backgroundTask= new BackgroundTask(getApplicationContext());
-        backgroundTask.execute(type, login.getEmail1());
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        lessons.clear();
-        for(int i = 0; i < data_lesson[0].length; i++){
-            String lesson = "Instruktor: " + data_lesson[0][i] + " , " + data_lesson[4][i] + ":00" + " " + data_lesson[3][i] + ".0" + data_lesson[2][i] + "." + data_lesson[1][i];
-            lessons.add(lesson);
-        }
-    }
+    private ArrayList<String> lessons = new ArrayList<>();
+    private String tmp_instructor, tmp_year, tmp_month, tmp_day, tmp_hour;
+    private int tmp_position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rating_lessons);
+        setContentView(R.layout.activity_future_lessons);
+
         String type="lesson_info";
         BackgroundTask backgroundTask= new BackgroundTask(getApplicationContext());
         backgroundTask.execute(type, login.getEmail1());
@@ -56,11 +39,9 @@ public class RatingLessons extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        submit = findViewById(R.id.btn_submit);
-        spinner = findViewById(R.id.spinner_lessons);
-        ratingBar = findViewById(R.id.ratingBar);
+        cancel = findViewById(R.id.btn_cancel);
+        spinner = findViewById(R.id.spinner_cancel);
         data_lesson = backgroundTask.getData_lesson();
-
         for(int i = 0; i < data_lesson[0].length; i++){
             String compareDate;
             if(Integer.parseInt(data_lesson[3][i]) < 10) {
@@ -82,19 +63,22 @@ public class RatingLessons extends AppCompatActivity {
             Integer nowInt = Integer.parseInt(now.substring(0,2)) + Integer.parseInt(now.substring(3,5))*100 + Integer.parseInt(now.substring(6))*10000;
             Integer dateInt = Integer.parseInt(compareDate.substring(0,2)) + Integer.parseInt(compareDate.substring(3,5))*100 + Integer.parseInt(compareDate.substring(6))*10000;
 
-            if(nowInt > dateInt) {
+            if(nowInt < dateInt) {
                 String lesson = "Instruktor: " + data_lesson[0][i] + " , " + data_lesson[4][i] + ":00" + " " + compareDate;
                 lessons.add(lesson);
                 newPosition.add(i);
             }
         }
         if(lessons.isEmpty()) {
-            lessons.add("Nie ma zadnych lekcji do oceny");
+            lessons.add("Nie masz żadnych nadchodzących lekcji");
+        }
+        for(int i = 0; i < lessons.size(); i++){
+            System.out.println(lessons.get(i));
         }
         ArrayAdapter<String> adapter_lessons = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, lessons);
         adapter_lessons.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter_lessons);
-        if(lessons.get(0).equals("Nie ma zadnych lekcji do oceny")) {
+        if(lessons.get(0).equals("Nie masz żadnych nadchodzących lekcji")) {
             spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -123,12 +107,13 @@ public class RatingLessons extends AppCompatActivity {
                 }
             });
         }
-        submit.setOnClickListener(new View.OnClickListener() {
+        cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String type1="lesson_rate";
+                String type1="lesson_cancel";
                 BackgroundTask backgroundTask= new BackgroundTask(getApplicationContext());
-                backgroundTask.execute(type1, login.getEmail1(), tmp_instructor, tmp_year, tmp_month, tmp_day, tmp_hour, Float.toString(ratingBar.getRating()));
+                System.out.println(login.getEmail1() + tmp_instructor + tmp_year + tmp_month + tmp_day + tmp_hour);
+                backgroundTask.execute(type1, login.getEmail1(), tmp_instructor, tmp_year, tmp_month, tmp_day, tmp_hour);
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
@@ -138,4 +123,5 @@ public class RatingLessons extends AppCompatActivity {
             }
         });
     }
+
 }

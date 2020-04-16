@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="#F7F8F8"
     tools:context=".MainActivity">
 
     <EditText
@@ -15,6 +15,7 @@
         android:ems="10"
         android:hint="Imię"
         android:inputType="textPersonName"
+        android:textColorHint="#E436679C"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,6 +28,7 @@
         android:ems="10"
         android:hint="Nazwisko"
         android:inputType="textPersonName"
+        android:textColorHint="#E436679C"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_imie" />
@@ -36,8 +38,9 @@
         android:layout_width="374dp"
         android:layout_height="61dp"
         android:ems="10"
-        android:hint="Data Urodzenia"
+        android:hint="Data Urodzenia , np. 1900.01.01"
         android:inputType="date"
+        android:textColorHint="#E436679C"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_nazwisko" />
@@ -50,6 +53,7 @@
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
+        android:textColorHint="#E436679C"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_urodziny" />
@@ -61,6 +65,7 @@
         android:ems="10"
         android:hint="Haslo"
         android:inputType="textPassword"
+        android:textColorHint="#E436679C"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_email" />
@@ -70,8 +75,9 @@
         android:layout_width="154dp"
         android:layout_height="69dp"
         android:layout_marginTop="12dp"
-        android:background="#2196F3"
+        android:background="#E436679C"
         android:text="Zarejestruj się"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -82,8 +88,9 @@
         android:layout_width="125dp"
         android:layout_height="49dp"
         android:layout_marginTop="12dp"
-        android:background="#2196F3"
+        android:background="#E436679C"
         android:text="Zaloguj się"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rejestracja_btn" />
@@ -95,6 +102,7 @@
         android:ems="10"
         android:hint="Nr telefonu"
         android:inputType="phone"
+        android:textColorHint="#E436679C"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_urodziny" />

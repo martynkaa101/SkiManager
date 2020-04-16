@@ -4,21 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RatingLessons">
-
-    <RatingBar
-        android:id="@+id/ratingBar"
-        android:layout_width="242dp"
-        android:layout_height="59dp"
-        android:layout_marginTop="130dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_lessons" />
+    android:background="@android:color/background_light"
+    tools:context=".FutureLessons">
 
     <Spinner
-        android:id="@+id/spinner_lessons"
+        android:id="@+id/spinner_cancel"
         android:layout_width="0dp"
-        android:layout_height="60dp"
+        android:layout_height="80dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="80dp"
@@ -26,10 +18,10 @@
         android:layout_marginRight="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textView5"
         android:layout_width="0dp"
         android:layout_height="80dp"
         android:layout_marginStart="8dp"
@@ -37,22 +29,25 @@
         android:layout_marginTop="64dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:text="Pomoź nam i oceń jakość swoich lekcji."
         android:gravity="center_horizontal"
+        android:text="Poinformuj nas, jeżelli chcesz odwołac lekcję."
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btn_submit"
-        android:layout_width="120dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="32dp"
+        android:id="@+id/btn_cancel"
+        android:layout_width="140dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="150dp"
         android:background="#E436679C"
-        android:text="Potwierdź"
+        android:text="Odwołaj"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
+        app:layout_constraintTop_toBottomOf="@+id/spinner_cancel" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

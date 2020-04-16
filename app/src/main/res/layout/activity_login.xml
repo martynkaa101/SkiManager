@@ -11,8 +11,9 @@
         android:layout_width="140dp"
         android:layout_height="60dp"
         android:layout_marginTop="16dp"
-        android:background="#2196F3"
+        android:background="#E436679C"
         android:text="Zarejestruj sie"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,6 +26,7 @@
         android:ems="10"
         android:hint="Haslo"
         android:inputType="textPassword"
+        android:textColorHint="#E436679C"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/_txt_email_login" />
@@ -37,6 +39,7 @@
         android:ems="10"
         android:hint="Email"
         android:inputType="textPersonName"
+        android:textColorHint="#E436679C"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -46,8 +49,9 @@
         android:layout_width="170dp"
         android:layout_height="60dp"
         android:layout_marginTop="64dp"
-        android:background="#2196F3"
+        android:background="#E436679C"
         android:text="Zaloguj sie"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/_txt_haslo_login" />

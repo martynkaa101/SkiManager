@@ -63,6 +63,8 @@ public class BackgroundTask extends AsyncTask<String, String, String>{
         String savedLessonURL="http://10.0.2.2:8080/registration_folder/saved_lesson.php";
         String lessonInfoURL="http://10.0.2.2:8080/registration_folder/lesson_info.php";
         String lessonRateURL="http://10.0.2.2:8080/registration_folder/lesson_rate.php";
+        String lessonCancelURL="http://10.0.2.2:8080/registration_folder/lesson_cancel.php";
+        String passwordChangeURL="http://10.0.2.2:8080/registration_folder/password_change.php";
 
 
         if(type.equals("reg")){
@@ -382,6 +384,96 @@ public class BackgroundTask extends AsyncTask<String, String, String>{
                             "&" + URLEncoder.encode("day", "UTF-8") + "=" + URLEncoder.encode(day, "UTF-8") +
                             "&" + URLEncoder.encode("hour", "UTF-8") + "=" + URLEncoder.encode(hour, "UTF-8") +
                             "&" + URLEncoder.encode("rate", "UTF-8") + "=" + URLEncoder.encode(rate, "UTF-8");
+                    bufferedWriter.write(lesson_data);
+                    bufferedWriter.flush();
+                    bufferedWriter.close();
+                    InputStream inputStream = httpURLConnection.getInputStream();
+                    InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "ISO-8859-1");
+                    BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                    String result = "";
+                    String line = "";
+                    StringBuilder stringBuilder = new StringBuilder();
+                    while ((line = bufferedReader.readLine()) != null) {
+                        stringBuilder.append(line).append("\n");
+
+                    }
+                    result = stringBuilder.toString();
+                    bufferedReader.close();
+                    inputStream.close();
+                    httpURLConnection.disconnect();
+                    return result;
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+        } else if(type.equals("lesson_cancel")) {
+            String email = strings[1];
+            String instructor = strings[2];
+            String year = strings[3];
+            String month = strings[4];
+            String day = strings[5];
+            String hour = strings[6];
+
+            try {
+                URL url = new URL(lessonCancelURL);
+                try {
+                    HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                    httpURLConnection.setRequestMethod("POST");
+                    httpURLConnection.setDoOutput(true);
+                    httpURLConnection.setDoInput(true);
+                    OutputStream outputStream = httpURLConnection.getOutputStream();
+                    OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream, "UTF-8");
+                    BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
+                    String lesson_data = URLEncoder.encode("email", "UTF-8") + "=" + URLEncoder.encode(email, "UTF-8") +
+                            "&" + URLEncoder.encode("instructor", "UTF-8") + "=" + URLEncoder.encode(instructor, "UTF-8") +
+                            "&" + URLEncoder.encode("year", "UTF-8") + "=" + URLEncoder.encode(year, "UTF-8") +
+                            "&" + URLEncoder.encode("month", "UTF-8") + "=" + URLEncoder.encode(month, "UTF-8") +
+                            "&" + URLEncoder.encode("day", "UTF-8") + "=" + URLEncoder.encode(day, "UTF-8") +
+                            "&" + URLEncoder.encode("hour", "UTF-8") + "=" + URLEncoder.encode(hour, "UTF-8");
+                    bufferedWriter.write(lesson_data);
+                    bufferedWriter.flush();
+                    bufferedWriter.close();
+                    InputStream inputStream = httpURLConnection.getInputStream();
+                    InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "ISO-8859-1");
+                    BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                    String result = "";
+                    String line = "";
+                    StringBuilder stringBuilder = new StringBuilder();
+                    while ((line = bufferedReader.readLine()) != null) {
+                        stringBuilder.append(line).append("\n");
+
+                    }
+                    result = stringBuilder.toString();
+                    bufferedReader.close();
+                    inputStream.close();
+                    httpURLConnection.disconnect();
+                    return result;
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+        } else if(type.equals("password_change")) {
+            String email = strings[1];
+            String oldPassword = strings[2];
+            String newPassword = strings[3];
+
+            try {
+                URL url = new URL(passwordChangeURL);
+                try {
+                    HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                    httpURLConnection.setRequestMethod("POST");
+                    httpURLConnection.setDoOutput(true);
+                    httpURLConnection.setDoInput(true);
+                    OutputStream outputStream = httpURLConnection.getOutputStream();
+                    OutputStreamWriter outputStreamWriter = new OutputStreamWriter(outputStream, "UTF-8");
+                    BufferedWriter bufferedWriter = new BufferedWriter(outputStreamWriter);
+                    String lesson_data = URLEncoder.encode("email", "UTF-8") + "=" + URLEncoder.encode(email, "UTF-8") +
+                            "&" + URLEncoder.encode("oldPassword", "UTF-8") + "=" + URLEncoder.encode(oldPassword, "UTF-8") +
+                            "&" + URLEncoder.encode("newPassword", "UTF-8") + "=" + URLEncoder.encode(newPassword, "UTF-8");
                     bufferedWriter.write(lesson_data);
                     bufferedWriter.flush();
                     bufferedWriter.close();

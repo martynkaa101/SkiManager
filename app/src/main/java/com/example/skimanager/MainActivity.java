@@ -1,13 +1,15 @@
 package com.example.skimanager;
 
 import android.content.Intent;
-//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+//import android.support.v7.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
     Button _btnReg, _btnLogin;
@@ -15,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        System.out.println(Base64.encodeToString("test".getBytes(), Base64.DEFAULT));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         _btnLogin=(Button)findViewById(R.id.login_btn);
@@ -33,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
                 String urodziny=_txtUrodziny.getText().toString();
                 String telefon=_txtTelefon.getText().toString();
                 String email=_txtEmail.getText().toString();
-                String haslo=_txtHaslo.getText().toString();
+                String haslo = Base64.encodeToString(_txtHaslo.getText().toString().getBytes(), Base64.DEFAULT);
                 String type="reg";
                 BackgroundTask backgroundTask= new BackgroundTask(getApplicationContext());
                 backgroundTask.execute(type, imie, nazwisko, urodziny, telefon, email, haslo);

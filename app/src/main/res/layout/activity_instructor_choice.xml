@@ -79,7 +79,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="36dp"
         android:layout_marginRight="36dp"
-        android:background="#BF009662"
+        android:background="#E436679C"
         android:text="ZATWIERDŹ"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/calendarView" />
