@@ -9,7 +9,7 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class login extends AppCompatActivity {
+public class Login extends AppCompatActivity {
     private static String email1;
     Button btn_login, btn_rejestracja;
     EditText txt_haslo_login, txt_email_login;
@@ -42,7 +42,7 @@ public class login extends AppCompatActivity {
                 }
                 if(backgroundTask.isResult1() == true) {
                     email1 = txt_email_login.getText().toString();
-                    Intent intent = new Intent(login.this, MainPanel.class);
+                    Intent intent = new Intent(Login.this, MainPanel.class);
                     startActivity(intent);
                 }
 
@@ -53,7 +53,7 @@ public class login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(login.this, MainActivity.class);
+                Intent intent = new Intent(Login.this, MainActivity.class);
                 startActivity(intent);
 
             }

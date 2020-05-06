@@ -22,7 +22,7 @@ public class MainPanel extends AppCompatActivity {
         btn_wyloguj.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainPanel.this, login.class);
+                Intent intent = new Intent(MainPanel.this, Login.class);
                 startActivity(intent);
             }
         });

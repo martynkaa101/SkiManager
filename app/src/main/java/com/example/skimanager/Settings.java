@@ -28,7 +28,7 @@ public class Settings extends AppCompatActivity {
                 String newPassword = Base64.encodeToString(txt_newPassword.getText().toString().getBytes(), Base64.DEFAULT);
                 String type="password_change";
                 BackgroundTask backgroundTask= new BackgroundTask(getApplicationContext());
-                backgroundTask.execute(type, login.getEmail1(), oldPassword, newPassword);
+                backgroundTask.execute(type, Login.getEmail1(), oldPassword, newPassword);
             }
         });
     }

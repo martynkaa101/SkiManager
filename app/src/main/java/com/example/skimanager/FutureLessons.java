@@ -32,7 +32,7 @@ public class FutureLessons extends AppCompatActivity {
 
         String type="lesson_info";
         BackgroundTask backgroundTask= new BackgroundTask(getApplicationContext());
-        backgroundTask.execute(type, login.getEmail1());
+        backgroundTask.execute(type, Login.getEmail1());
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
@@ -112,8 +112,8 @@ public class FutureLessons extends AppCompatActivity {
             public void onClick(View v) {
                 String type1="lesson_cancel";
                 BackgroundTask backgroundTask= new BackgroundTask(getApplicationContext());
-                System.out.println(login.getEmail1() + tmp_instructor + tmp_year + tmp_month + tmp_day + tmp_hour);
-                backgroundTask.execute(type1, login.getEmail1(), tmp_instructor, tmp_year, tmp_month, tmp_day, tmp_hour);
+                System.out.println(Login.getEmail1() + tmp_instructor + tmp_year + tmp_month + tmp_day + tmp_hour);
+                backgroundTask.execute(type1, Login.getEmail1(), tmp_instructor, tmp_year, tmp_month, tmp_day, tmp_hour);
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {

@@ -56,22 +56,21 @@ public class BackgroundTask extends AsyncTask<String, String, String>{
 
 
         String type=strings[0];
-        String loginURL="http://10.0.2.2:8080/registration_folder/login.php";
-        String regURL="http://10.0.2.2:8080/registration_folder/registration.php";
-        String instructorURL="http://10.0.2.2:8080/registration_folder/free_hour.php";
-        String lessonURL="http://10.0.2.2:8080/registration_folder/lesson.php";
-        String savedLessonURL="http://10.0.2.2:8080/registration_folder/saved_lesson.php";
-        String lessonInfoURL="http://10.0.2.2:8080/registration_folder/lesson_info.php";
-        String lessonRateURL="http://10.0.2.2:8080/registration_folder/lesson_rate.php";
-        String lessonCancelURL="http://10.0.2.2:8080/registration_folder/lesson_cancel.php";
-        String passwordChangeURL="http://10.0.2.2:8080/registration_folder/password_change.php";
+        String loginURL="http://35.198.175.92/ski_manager/login.php";
+        String regURL="http://35.198.175.92/ski_manager/registration.php";
+        String instructorURL="http://35.198.175.92/ski_manager/free_hour.php";
+        String lessonURL="http://35.198.175.92/ski_manager/lesson.php";
+        String savedLessonURL="http://35.198.175.92/ski_manager/saved_lesson.php";
+        String lessonInfoURL="http://35.198.175.92/ski_manager/lesson_info.php";
+        String lessonRateURL="http://35.198.175.92/ski_manager/lesson_rate.php";
+        String lessonCancelURL="http://35.198.175.92/ski_manager/lesson_cancel.php";
+        String passwordChangeURL="http://35.198.175.92/ski_manager/password_change.php";
 
 
         if(type.equals("reg")){
-            //System.out.println("cos tam sie udalo");
             String imie= strings[1];
             String nazwisko=strings[2];
-            String urodziny= strings[3]; //nie wiadomo czy zadziala
+            String urodziny= strings[3];
             String telefon=strings[4];
             String email=strings[5];
             String haslo=strings[6];
@@ -201,6 +200,7 @@ public class BackgroundTask extends AsyncTask<String, String, String>{
                         data[0][i] = jsonObject.getString("hour");
                         data[1][i] = jsonObject.getString("free_flag");
                     }
+                    result = "";
                     return result;
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -345,6 +345,7 @@ public class BackgroundTask extends AsyncTask<String, String, String>{
                         data_lesson[3][i] = jsonObject.getString("day");
                         data_lesson[4][i] = jsonObject.getString("hour");
                     }
+                    result="";
                     return result;
                 } catch (JSONException e) {
                     e.printStackTrace();

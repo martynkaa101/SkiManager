@@ -30,7 +30,7 @@ public class RatingLessons extends AppCompatActivity {
     public void refresh(){
         String type="lesson_info";
         BackgroundTask backgroundTask= new BackgroundTask(getApplicationContext());
-        backgroundTask.execute(type, login.getEmail1());
+        backgroundTask.execute(type, Login.getEmail1());
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
@@ -49,7 +49,7 @@ public class RatingLessons extends AppCompatActivity {
         setContentView(R.layout.activity_rating_lessons);
         String type="lesson_info";
         BackgroundTask backgroundTask= new BackgroundTask(getApplicationContext());
-        backgroundTask.execute(type, login.getEmail1());
+        backgroundTask.execute(type, Login.getEmail1());
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
@@ -128,7 +128,7 @@ public class RatingLessons extends AppCompatActivity {
             public void onClick(View v) {
                 String type1="lesson_rate";
                 BackgroundTask backgroundTask= new BackgroundTask(getApplicationContext());
-                backgroundTask.execute(type1, login.getEmail1(), tmp_instructor, tmp_year, tmp_month, tmp_day, tmp_hour, Float.toString(ratingBar.getRating()));
+                backgroundTask.execute(type1, Login.getEmail1(), tmp_instructor, tmp_year, tmp_month, tmp_day, tmp_hour, Float.toString(ratingBar.getRating()));
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
